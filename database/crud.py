@@ -19,7 +19,6 @@ def create_wallet(user: pydantic_models.User = None, private_key: str = None, te
     return wallet
 
 
-
 @db_session
 def create_user(tg_id: int, nick: str = None):
     if nick:
