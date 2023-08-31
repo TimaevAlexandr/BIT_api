@@ -118,7 +118,7 @@ def get_transactions():
         transactions.append(transaction.to_dict())
     return transactions
 
-@api.post("/create_transaction")
+@api.post("/create_transaction/{user_id:int}")
 @crud.db_session
 def create_transaction(transaction: pydantic_models.Create_Transaction = fastapi.Body()):
 
@@ -131,7 +131,7 @@ def create_transaction(transaction: pydantic_models.Create_Transaction = fastapi
     except:
         pass
 
-    return tx.tx_hash
+    return crud.get_transaction_info(tx)
 
 @api.get("/get_user_wallet/{user_id:int}")
 @crud.db_session
