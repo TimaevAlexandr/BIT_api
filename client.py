@@ -93,9 +93,12 @@ def get_user_by_tg_id(tg_id):
 
 def create_transaction(tg_id, receiver_address: str, amount_btc_without_fee: float):
     user_dict = get_user_by_tg_id(tg_id)
-    payload = {'receiver_address': receiver_address,
+    payload = {
+               'tg_ID': tg_id,
+               'receiver_address': receiver_address,
                'amount_btc_without_fee': amount_btc_without_fee}
     responce = requests.post(f"{api_url}/create_transaction/{user_dict['id']}", json=payload)
+
     return responce.text
 
 def get_user_transactions(user_id):

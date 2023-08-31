@@ -6,7 +6,7 @@ db = Database()
 
 class User(db.Entity):
     id = PrimaryKey(int, auto=True)
-    tg_ID = Required(int, unique=True)
+    tg_ID = Required(int, unique=True, size=64)
     nick = Optional(str)
     create_date = Required(datetime, default=datetime.now())
     wallet = Required('Wallet')
