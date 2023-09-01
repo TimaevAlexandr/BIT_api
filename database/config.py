@@ -1,7 +1,11 @@
 privatekey_wallet = "cQL77b3ugaphBssqM71sCP9NZjvh43RJe7upimCyqdGanfSBXbvg"
 bot_token = "6414062136:AAHqjtcnGiJfHzC697r4rbb9V5wLq_khNsk"
 tg_admin_id = 822433170
+username = "admin"
+password = "$2b$12$M9uG/bJmYN2WWjmK3hQBMu5FBgpLJR/VGPWk9Sd6CrAuqqNi2jAYy"
 
+SECRET_KEY = "SUPER_SECRET_KEY"
+ALGORITHM = "HS256"
 fake_database = {'users': [
     {
         "id": 1,
