@@ -1,5 +1,5 @@
 import datetime
-import config
+import database.config as config
 import database.pydantic_models as pydantic_models
 import bit
 from database.db import *
@@ -66,10 +66,13 @@ def create_transaction(
 
     # отправляем транзакцию и получаем её хеш
     tx_hash = wallet_of_sender.send(output, fee, absolute_fee=True)
-
+    rec_wallet = Wallet.select(lambda w: w.address == receiver_address)
+    receiver = User.select(lambda u: u.wallet == rec_wallet.id)
     # создаем объект транзакции и сохраняем его тем самым в нашей БД
     transaction = Transaction(sender=sender,
+                              receiver = receiver,
                               sender_wallet=sender.wallet,
+                              receiver_wallet = rec_wallet.id,
                               fee=fee,
                               sender_address=sender.wallet.address,
                               receiver_address=receiver_address,
