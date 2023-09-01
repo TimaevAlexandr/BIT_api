@@ -52,4 +52,27 @@ class Create_Transaction(pydantic.BaseModel):
     receiver_address : str
     amount_btc_without_fee : float
 
-User_to_update.model_rebuild()
+
+# auth
+class Token(pydantic.BaseModel):
+    access_token: str
+    token_type: str
+
+
+class TokenData(pydantic.BaseModel):
+    username: str | None = None
+
+
+class Admin(pydantic.BaseModel): # вместо User, так как он уже есть
+# а так же удаляем лишние свойства
+    username: str
+
+
+class UserInDB(Admin):
+    hashed_password: str
+
+User.model_rebuild()
+User_to_create.model_rebuild()
+Transaction.model_rebuild()
+Create_Transaction.model_rebuild()
+Wallet.model_rebuild()
