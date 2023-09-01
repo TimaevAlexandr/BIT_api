@@ -12,6 +12,11 @@ word = "admin"
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 # make hashed password
 password = pwd_context.hash(word)
+
+#create a test account for user
+user_name = "user"
+user_pass = pwd_context.hash("user")
+
 SECRET_KEY = "SUPER_SECRET_KEY"
 ALGORITHM = "HS256"
 
